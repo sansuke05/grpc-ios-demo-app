@@ -1,0 +1,6 @@
+framework module RemoteClient {
+  umbrella header "RemoteClient-umbrella.h"
+
+  export *
+  module * { export * }
+}

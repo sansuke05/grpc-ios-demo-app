@@ -1,0 +1,53 @@
+{
+  "name": "RemoteClient",
+  "version": "0.0.1",
+  "license": "MIT",
+  "authors": {
+    "Watanabe": "takanori5064@gmail.com"
+  },
+  "homepage": "http://sansuke05.hatenablog.com/",
+  "summary": "gRPC test client",
+  "source": {
+    "git": ""
+  },
+  "platforms": {
+    "ios": "11.2",
+    "osx": "10.12"
+  },
+  "dependencies": {
+    "!ProtoCompiler-gRPCPlugin": [
+      "~> 1.0.0"
+    ]
+  },
+  "prepare_command": "../Pods/!ProtoCompiler/protoc             --plugin=protoc-gen-grpc=../Pods/!ProtoCompiler-gRPCPlugin/grpc_objective_c_plugin             --objc_out=.             --grpc_out=.             -I .             -I ../Pods/!ProtoCompiler             *.proto",
+  "subspecs": [
+    {
+      "name": "Messages",
+      "source_files": "*.pbobjc.{h,m}",
+      "header_mappings_dir": ".",
+      "requires_arc": false,
+      "dependencies": {
+        "Protobuf": [
+
+        ]
+      },
+      "pod_target_xcconfig": {
+        "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1"
+      }
+    },
+    {
+      "name": "Services",
+      "source_files": "*.pbrpc.{h,m}",
+      "header_mappings_dir": ".",
+      "requires_arc": true,
+      "dependencies": {
+        "gRPC-ProtoRPC": [
+
+        ],
+        "RemoteClient/Messages": [
+
+        ]
+      }
+    }
+  ]
+}

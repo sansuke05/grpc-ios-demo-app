@@ -1,0 +1,6 @@
+framework module Pods_GrpcMobileDemoUITests {
+  umbrella header "Pods-GrpcMobileDemoUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
